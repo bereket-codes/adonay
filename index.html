@@ -220,61 +220,49 @@
       border: 1px solid rgba(255,255,255,0.3);
     }
     
-    /* Video Player */
-    .video-container {
+    /* Work Gallery Grid */
+    .work-gallery-item {
       position: relative;
       border-radius: 24px;
       overflow: hidden;
+      aspect-ratio: 9/16;
       background: #000;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
       border: 3px solid rgba(255,255,255,0.1);
-      transition: all 0.5s ease;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
     }
     
-    .video-container:hover {
-      transform: translateY(-5px);
+    .work-gallery-item:hover {
+      transform: translateY(-10px) scale(1.02);
       box-shadow: 0 40px 100px rgba(0,0,0,0.4);
     }
     
-    .video-container video {
+    .work-gallery-item img {
       width: 100%;
-      aspect-ratio: 9/16;
+      height: 100%;
       object-fit: cover;
-      cursor: pointer;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    .play-button-overlay {
+    .work-gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .work-gallery-overlay {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80px;
-      height: 80px;
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(10px);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: 2px solid rgba(255,255,255,0.3);
-      z-index: 3;
-    }
-    
-    .play-button-overlay:hover {
-      background: rgba(255,255,255,0.3);
-      transform: translate(-50%, -50%) scale(1.1);
-    }
-    
-    .play-button-overlay i {
-      font-size: 2rem;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 30px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.9));
       color: white;
+      z-index: 2;
+      transition: all 0.3s ease;
     }
     
-    .play-button-overlay.hidden {
-      opacity: 0;
-      pointer-events: none;
+    .work-gallery-item:hover .work-gallery-overlay {
+      padding-bottom: 40px;
     }
     
     /* Buttons */
@@ -515,7 +503,7 @@
           <p class="lead text-muted mb-4">Transforming ideas into cinematic experiences through videography, compelling scripts, and strategic social media.</p>
           <div class="d-flex gap-3 flex-wrap">
             <a href="#portfolio" class="btn btn-primary-gold btn-lg">
-              <i class="bi bi-play-circle me-2"></i>View Portfolio
+              <i class="bi bi-grid me-2"></i>View Portfolio
             </a>
             <a href="#contact" class="btn btn-outline-dark btn-lg">
               <i class="bi bi-chat-dots me-2"></i>Let's Talk
@@ -638,68 +626,71 @@
     </div>
   </section>
 
-  <!-- Portfolio Section -->
+  <!-- Portfolio Section with Photos -->
   <section id="portfolio" class="py-5" style="background: #f8f7f4;">
     <div class="container py-5">
       <div class="text-center mb-5" data-aos="fade-up">
         <div class="section-subtitle">Recent Work</div>
         <h2 class="section-title">Featured Projects</h2>
-        <p class="text-muted">Click to play/pause • Only one video plays at a time</p>
+        <p class="text-muted">A showcase of professional work and creative projects</p>
       </div>
       
       <div class="row g-4 justify-content-center">
         <div class="col-md-6 col-lg-5" data-aos="zoom-in" data-aos-delay="100">
-          <div class="video-container" onclick="toggleVideo('video1', 'playBtn1')">
-            <video id="video1" poster="ado1.jpg" playsinline preload="metadata">
-              <source src="vid1.mp4" type="video/mp4">
-              <source src="vid1.mov" type="video/quicktime">
-            </video>
-            <div class="play-button-overlay" id="playBtn1">
-              <i class="bi bi-play-fill"></i>
+          <div class="work-gallery-item">
+            <img src="ado4.jpg" alt="Post production work by Adonay Girmay">
+            <div class="work-gallery-overlay">
+              <h5 class="mb-1">Post Production</h5>
+              <small>Professional editing & color grading</small>
             </div>
           </div>
           <div class="text-center mt-3">
-            <h5 class="fw-bold">Urban Documentary</h5>
-            <p class="text-muted small">Cinematography & Direction</p>
+            <h5 class="fw-bold">Editing Suite</h5>
+            <p class="text-muted small">Professional post-production workflow</p>
           </div>
         </div>
         
         <div class="col-md-6 col-lg-5" data-aos="zoom-in" data-aos-delay="200">
-          <div class="video-container" onclick="toggleVideo('video2', 'playBtn2')">
-            <video id="video2" poster="ado2.jpg" playsinline preload="metadata">
-              <source src="vid2.mp4" type="video/mp4">
-              <source src="vid2.mov" type="video/quicktime">
-            </video>
-            <div class="play-button-overlay" id="playBtn2">
-              <i class="bi bi-play-fill"></i>
+          <div class="work-gallery-item">
+            <img src="ado5.jpg" alt="Content strategy by Adonay Girmay">
+            <div class="work-gallery-overlay">
+              <h5 class="mb-1">Content Strategy</h5>
+              <small>Social media planning & execution</small>
             </div>
           </div>
           <div class="text-center mt-3">
-            <h5 class="fw-bold">Brand Storytelling</h5>
-            <p class="text-muted small">Script & Post-Production</p>
+            <h5 class="fw-bold">Social Media Management</h5>
+            <p class="text-muted small">Strategic content creation & growth</p>
           </div>
         </div>
       </div>
       
-      <!-- Additional Work Images -->
+      <!-- Additional Work Showcase -->
       <div class="row g-4 mt-4 justify-content-center">
         <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
-          <div class="tiktok-frame-wrapper">
-            <div class="tiktok-frame">
-              <img src="ado4.jpg" alt="Post production work by Adonay Girmay">
-              <div class="frame-overlay">
-                <h6>Post Production</h6>
-              </div>
+          <div class="work-gallery-item">
+            <img src="ado1.jpg" alt="On-location shoot by Adonay Girmay">
+            <div class="work-gallery-overlay">
+              <h6>On Location</h6>
+              <small>Professional videography</small>
             </div>
           </div>
         </div>
         <div class="col-md-4" data-aos="flip-left" data-aos-delay="400">
-          <div class="tiktok-frame-wrapper">
-            <div class="tiktok-frame">
-              <img src="ado5.jpg" alt="Content strategy by Adonay Girmay">
-              <div class="frame-overlay">
-                <h6>Content Strategy</h6>
-              </div>
+          <div class="work-gallery-item">
+            <img src="ado2.jpg" alt="Directing work by Adonay Girmay">
+            <div class="work-gallery-overlay">
+              <h6>Directing</h6>
+              <small>Creative direction</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="flip-left" data-aos-delay="500">
+          <div class="work-gallery-item">
+            <img src="ado3.jpg" alt="Behind the scenes with Adonay Girmay">
+            <div class="work-gallery-overlay">
+              <h6>Behind Scenes</h6>
+              <small>Production setup</small>
             </div>
           </div>
         </div>
@@ -790,67 +781,6 @@
       setTimeout(function() {
         document.querySelector('.loader-wrapper').classList.add('hidden');
       }, 1500);
-    });
-    
-    // Smart Video Playback - Toggle play/pause on demand
-    function toggleVideo(videoId, buttonId) {
-      const video = document.getElementById(videoId);
-      const playBtn = document.getElementById(buttonId);
-      
-      // If this video is currently playing, pause it
-      if (!video.paused) {
-        video.pause();
-        playBtn.classList.remove('hidden');
-        playBtn.querySelector('i').className = 'bi bi-play-fill';
-        return;
-      }
-      
-      // Pause all other videos first
-      const allVideos = document.querySelectorAll('video');
-      allVideos.forEach(v => {
-        if (v.id !== videoId) {
-          v.pause();
-          const otherBtnId = 'playBtn' + v.id.replace('video', '');
-          const otherBtn = document.getElementById(otherBtnId);
-          if (otherBtn) {
-            otherBtn.classList.remove('hidden');
-            otherBtn.querySelector('i').className = 'bi bi-play-fill';
-          }
-        }
-      });
-      
-      // Play current video
-      video.play();
-      playBtn.classList.add('hidden');
-    }
-    
-    // Video event listeners
-    document.querySelectorAll('video').forEach(video => {
-      video.addEventListener('play', function() {
-        const btnId = 'playBtn' + this.id.replace('video', '');
-        const btn = document.getElementById(btnId);
-        if (btn) {
-          btn.classList.add('hidden');
-        }
-      });
-      
-      video.addEventListener('pause', function() {
-        const btnId = 'playBtn' + this.id.replace('video', '');
-        const btn = document.getElementById(btnId);
-        if (btn) {
-          btn.classList.remove('hidden');
-          btn.querySelector('i').className = 'bi bi-play-fill';
-        }
-      });
-      
-      video.addEventListener('ended', function() {
-        const btnId = 'playBtn' + this.id.replace('video', '');
-        const btn = document.getElementById(btnId);
-        if (btn) {
-          btn.classList.remove('hidden');
-          btn.querySelector('i').className = 'bi bi-play-fill';
-        }
-      });
     });
     
     // Navbar scroll effect
